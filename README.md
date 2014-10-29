@@ -1,0 +1,4 @@
+sxcmd
+=====
+
+startx command
