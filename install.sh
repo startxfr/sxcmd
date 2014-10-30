@@ -24,7 +24,7 @@ echo $ep "downloading source file "
 curl $sourceurl/$sourcefile > $homedir/$userdir/$sourcefile
 if [ -e $homedir/$userdir/$sourcefile ]; then
     echo $ep "extracting program "
-    unzip $sourcefile &> /dev/null
+    unzip $sourcefile
     if [ -d $homedir/$userdir/sxcmd-master ]; then
         cd sxcmd-master
         echo $ep "cleanup installation "
