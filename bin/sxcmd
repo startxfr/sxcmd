@@ -1,0 +1,13 @@
+#!/bin/bash
+# Script used to help startx developper's
+
+homedir=~
+userdir=$homedir/.sxcmd
+ep="[sxcmd]"
+
+echo $ep ""
+echo $ep "  +-----------------------------------+"
+echo $ep "  | SXCMD : STARTX command line tools |"
+echo $ep "  +-----------------------------------+"
+
+
