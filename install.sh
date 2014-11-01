@@ -7,7 +7,7 @@ ORIGIN=`pwd`
 SXCMD_DIRNAME=.sxcmd
 SXCMD_PATH=$HOME/$SXCMD_DIRNAME
 EP="[sxcmd-install]"
-SOURCE_URL="https://github.com/startxfr/sxcmd/tarball/master"
+SOURCE_URL="https://github.com/startxfr/sxcmd/tarball/dev/cl"
 SOURCE_FILE="source.tar.gz"
 
 echo $EP ""
