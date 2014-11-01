@@ -1,6 +1,7 @@
 #!/bin/bash
 # Script use to save the database collections
 
+VERSION=0.1
 HOME=~
 ORIGIN=`pwd`
 SXCMD_DIRNAME=.sxcmd

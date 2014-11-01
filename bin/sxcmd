@@ -1,6 +1,7 @@
 #!/bin/bash
 # Script used to help startx developper's
 
+VERSION=0.1
 HOME=~
 ORIGIN=`pwd`
 SXCMD_DIRNAME=.sxcmd
