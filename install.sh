@@ -1,27 +1,28 @@
 #!/bin/bash
 # Script use to save the database collections
 
-VERSION=0.1
+VERSION="dev/cl"
 HOME=~
 ORIGIN=`pwd`
 SXCMD_DIRNAME=.sxcmd
 SXCMD_PATH=$HOME/$SXCMD_DIRNAME
+CMDS_REQUIRED="tar git curl"
 EP="[sxcmd-install]"
-SOURCE_URL="https://github.com/startxfr/sxcmd/tarball/dev/cl"
+SOURCE_URL="https://github.com/startxfr/sxcmd/tarball/$VERSION"
 SOURCE_FILE="source.tar.gz"
 
 echo $EP ""
 echo $EP "  +-----------------+"
 echo $EP "  | SXCMD Installer |"
 echo $EP "  +-----------------+"
+echo $EP "    version : " $VERSION
 echo $EP ""
 
 
 # Test if mandatory bin exists on this system
-CMDS="tar git curl"
-for i in $CMDS
+for i in $CMDS_REQUIRED
 do
-	command -v $i &> /dev/null && continue || { echo "$i command not found. Try yum install $i and restart this installer."; exit 1; }
+    command -v $i &> /dev/null && continue || { echo "$i command not found. Try yum install $i and restart this installer."; exit 1; }
 done
 
 # Create the sxcmd user directory
@@ -30,9 +31,7 @@ if [ ! -d $SXCMD_PATH ]; then
     mkdir $SXCMD_PATH
 fi;
 
-
-
-
+# Download and install
 cd $SXCMD_PATH
 rm -rf *
 echo $EP "downloading source file "
@@ -47,7 +46,7 @@ if [ -e $SXCMD_PATH/$SOURCE_FILE ]; then
     for i in $REMOVE; do
         rm -f $i > /dev/null
     done   
-    cd -  > /dev/null
+    cd - > /dev/null
     rm -f $SOURCE_FILE > /dev/null
     cd $ORIGIN > /dev/null
     rm -f install.sh > /dev/null
