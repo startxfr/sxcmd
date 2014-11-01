@@ -1,51 +1,62 @@
 #!/bin/bash
 # Script use to save the database collections
 
-homedir=~
-origin=`pwd`
-userdir=.sxcmd
-ep="[sxcmd-install]"
-sourceurl="https://github.com/startxfr/sxcmd/archive/"
-sourcefile="master.zip"
+HOME=~
+ORIGIN=`pwd`
+SXCMD_DIRNAME=.sxcmd
+SXCMD_PATH=$HOME/$SXCMD_DIRNAME
+EP="[sxcmd-install]"
+SOURCE_URL="https://github.com/startxfr/sxcmd/tarball/master"
+SOURCE_FILE="source.tar.gz"
 
-echo $ep ""
-echo $ep "  +-----------------+"
-echo $ep "  | SXCMD Installer |"
-echo $ep "  +-----------------+"
-echo $ep ""
+echo $EP ""
+echo $EP "  +-----------------+"
+echo $EP "  | SXCMD Installer |"
+echo $EP "  +-----------------+"
+echo $EP ""
 
-if [ ! -d $homedir/$userdir ]; then
-    echo $ep "adding $userdir directory"
-    mkdir $homedir/$userdir
+
+# Test if mandatory bin exists on this system
+CMDS="tar git curl"
+for i in $CMDS
+do
+	command -v $i &> /dev/null && continue || { echo "$i command not found. Try yum install $i and restart this installer."; exit 1; }
+done
+
+# Create the sxcmd user directory
+if [ ! -d $SXCMD_PATH ]; then
+    echo $EP "adding $SXCMD_DIRNAME directory"
+    mkdir $SXCMD_PATH
 fi;
 
-cd $homedir/$userdir
-echo $ep "downloading source file "
-curl $sourceurl/$sourcefile > $homedir/$userdir/$sourcefile
-if [ -e $homedir/$userdir/$sourcefile ]; then
-    echo $ep "extracting program "
-    xx=`unzip $sourcefile`
-    if [ -d $homedir/$userdir/sxcmd-master ]; then
-        cd sxcmd-master
-        echo $ep "cleanup installation "
-        rm -f install.sh .gitignore
-        mv * ../
-        cd -
-        rm -f $sourcefile
-        cd $origin &> /dev/null
-        rm -f install.sh
-        echo $ep "register program"
-        echo "" >> $homedir/.bashrc
-        echo "export PATH=\$PATH:$homedir/$userdir/bin"  >> $homedir/.bashrc
-        . ~/.bashrc
-        echo $ep "SUCCESS : Installation is completed and you can start to use the 'sxcmd' from the commande line (if it doesn't work, start a new terminal !)"
-        exit;
-    else
-        rm -f $homedir/$userdir/$sourcefile
-        echo $ep "ERROR : Could not find sxcmd-master in source code"
-        exit;
-    fi;
+
+
+
+cd $SXCMD_PATH
+rm -rf *
+echo $EP "downloading source file "
+curl -LkSs $SOURCE_URL -o $SXCMD_PATH/$SOURCE_FILE
+if [ -e $SXCMD_PATH/$SOURCE_FILE ]; then
+    echo $EP "extracting program "
+    tar xzvf $SOURCE_FILE &> /dev/null
+    mv startxfr-*/* . > /dev/null
+    rm -rf startxfr-* > /dev/null
+    echo $EP "cleanup installation "
+    REMOVE="install.sh .gitignore"
+    for i in $REMOVE; do
+        rm -f $i > /dev/null
+    done   
+    cd -  > /dev/null
+    rm -f $SOURCE_FILE > /dev/null
+    cd $ORIGIN > /dev/null
+    rm -f install.sh > /dev/null
+    echo $EP "register program"
+    echo "" >> $HOME/.bashrc
+    echo "export PATH=\$PATH:$SXCMD_PATH/bin"  >> $HOME/.bashrc
+    source ~/.bashrc
+    echo $EP "SUCCESS : Installation is completed and you can start to use the 'sxcmd' from the commande line (if it doesn't work, start a new terminal !)"
+    exit;
 else
-    echo $ep "FATAL : Could not download sources from server"
+    echo $EP "FATAL : Could not download sources from server"
     exit;
 fi;

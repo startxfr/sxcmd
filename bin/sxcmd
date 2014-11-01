@@ -1,13 +1,15 @@
 #!/bin/bash
 # Script used to help startx developper's
 
-homedir=~
-userdir=$homedir/.sxcmd
-ep="[sxcmd]"
+HOME=~
+ORIGIN=`pwd`
+SXCMD_DIRNAME=.sxcmd
+SXCMD_PATH=$HOME/$SXCMD_DIRNAME
+EP="[sxcmd]"
 
-echo $ep ""
-echo $ep "  +-----------------------------------+"
-echo $ep "  | SXCMD : STARTX command line tools |"
-echo $ep "  +-----------------------------------+"
+echo $EP ""
+echo $EP "  +-----------------------------------+"
+echo $EP "  | SXCMD : STARTX command line tools |"
+echo $EP "  +-----------------------------------+"
 
 
