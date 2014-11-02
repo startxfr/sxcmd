@@ -1,13 +1,11 @@
-#!/usr/bin/php
 <?php
 
-$SXCMD_PATH="~/.sxcmd";
-$EP="[sxcmd]";
+$SXCMD_PATH = "~/.sxcmd";
+$EP = "[sxcmd]";
 
 function ask($q) {
     return trim(shell_exec("read -p '$q ' q\necho \$q"));
 }
-
 
 function displayIntro() {
     global $EP;
@@ -17,7 +15,6 @@ function displayIntro() {
     echo "$EP   +-----------------------------------+\n";
     echo "$EP\n";
 }
-
 
 function displayMenuPrincipal() {
     global $EP;
@@ -50,13 +47,11 @@ function displayMenuProject() {
     echo "$EP\n";
     echo "$EP -- Menu projet\n";
     $cwd = trim(shell_exec("pwd"));
-    if(file_exists($cwd.'/.startx/sxcmd')) {
-        shell_exec($cwd.'/.startx/sxcmd');
-    }
-    elseif(file_exists($cwd.'/.sxcmd/sxcmd')) {
-        shell_exec($cwd.'/.startx/sxcmd');
-    }
-    else {
+    if (file_exists($cwd . '/.startx/sxcmd')) {
+        shell_exec($cwd . '/.startx/sxcmd');
+    } elseif (file_exists($cwd . '/.sxcmd/sxcmd')) {
+        shell_exec($cwd . '/.startx/sxcmd');
+    } else {
         echo "$EP    Le dossier courant n'est pas un projet sxcmd\n";
         echo "$EP    Veuillez créer un dossier .startx et un script\n";
         echo "$EP    de commande\n$EP\n";
@@ -86,7 +81,5 @@ function displayMenuTest() {
     }
 }
 
-
-shell_exec("clear");
 displayIntro();
 displayMenuPrincipal();

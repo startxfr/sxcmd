@@ -1,1 +1,2 @@
-sxcmd.php
+#!/usr/bin/php
+<?php include("lib/sxcmd.php"); ?>
