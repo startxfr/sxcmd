@@ -1,6 +1,6 @@
 <?php
 
-$VERSION = "master";
+$VERSION = "0.1.1";
 $SXCMD_PATH = "~/.sxcmd";
 $EP = "[sxcmd]";
 $cwd = trim(shell_exec("pwd"));
