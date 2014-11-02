@@ -1,2 +1,2 @@
 #!/usr/bin/php
-<?php include("lib/sxcmd.php"); ?>
+<?php include dirname (__FILE__)."/lib/sxcmd.php"; ?>
