@@ -46,14 +46,14 @@ if [ -e $SXCMD_PATH/$SOURCE_FILE ]; then
     for i in $REMOVE; do
         rm -f $i > /dev/null
     done   
-    cd - > /dev/null
     rm -f $SOURCE_FILE > /dev/null
-    cd $ORIGIN > /dev/null
-    rm -f install.sh > /dev/null
     echo $EP "register program"
     echo "" >> $HOME/.bashrc
     echo "export PATH=\$PATH:$SXCMD_PATH/bin"  >> $HOME/.bashrc
     source ~/.bashrc
+    echo $EP "cleaning installation"
+    cd $ORIGIN > /dev/null
+    rm -f install.sh > /dev/null
     echo $EP "SUCCESS : Installation is completed and you can start to use the 'sxcmd' from the commande line (if it doesn't work, start a new terminal !)"
     exit;
 else
