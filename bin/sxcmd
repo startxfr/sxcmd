@@ -1,16 +1,1 @@
-#!/bin/bash
-# Script used to help startx developper's
-
-VERSION=0.1
-HOME=~
-ORIGIN=`pwd`
-SXCMD_DIRNAME=.sxcmd
-SXCMD_PATH=$HOME/$SXCMD_DIRNAME
-EP="[sxcmd]"
-
-echo $EP ""
-echo $EP "  +-----------------------------------+"
-echo $EP "  | SXCMD : STARTX command line tools |"
-echo $EP "  +-----------------------------------+"
-
-
+sxcmd.php
