@@ -22,6 +22,7 @@ This script require :
 ### <a name="v0.1.1"></a>v0.1.1, (1/29/2015)
 
 * auto-launch of project sxcmd if detected
+* passing parameters to project command if required
 
 ### <a name="v0.1.1"></a>v0.1.1, (12/5/2014)
 
