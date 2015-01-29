@@ -83,10 +83,17 @@ function displayMenuTest() {
     }
 }
 
+function get_cmdParams() {
+    global $argv;
+    if (count($argv) > 1)
+        return $argv[1];
+    return "";
+}
+
 if (file_exists($cwd . '/.startx/sxcmd')) {
-    system($cwd . '/.startx/sxcmd');
+    system($cwd . '/.startx/sxcmd '.get_cmdParams());
 } elseif (file_exists($cwd . '/.sxcmd/sxcmd')) {
-    system($cwd . '/.sxcmd/sxcmd');
+    system($cwd . '/.sxcmd/sxcmd '.get_cmdParams());
 } else {
     displayIntro();
     displayMenuPrincipal();
