@@ -83,5 +83,11 @@ function displayMenuTest() {
     }
 }
 
-displayIntro();
-displayMenuPrincipal();
+if (file_exists($cwd . '/.startx/sxcmd')) {
+    system($cwd . '/.startx/sxcmd');
+} elseif (file_exists($cwd . '/.sxcmd/sxcmd')) {
+    system($cwd . '/.sxcmd/sxcmd');
+} else {
+    displayIntro();
+    displayMenuPrincipal();
+}

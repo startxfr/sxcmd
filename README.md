@@ -15,7 +15,15 @@ This script require :
 
 ## Version history
 
-### <a name="v0.1.1"></a>v0.1.1, (not released)
+### <a name="v0.3"></a>v0.3, (not released)
+
+**not yet defined**
+
+### <a name="v0.1.1"></a>v0.1.1, (1/29/2015)
+
+* auto-launch of project sxcmd if detected
+
+### <a name="v0.1.1"></a>v0.1.1, (12/5/2014)
 
 * sxcmd in php
 * support for project directory .sxcmd
